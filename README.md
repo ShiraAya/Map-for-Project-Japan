@@ -15,6 +15,17 @@
 - **Mod ID:** `pjm`
 - **Status:** Active
 
+## Companion Project: Project Japan
+
+Project Japan Map is designed as the companion map and geography interface for **[Project Japan](https://github.com/ShiraAya/Project-Japan)**.
+
+Project Japan provides the terrain, geography and hydrology that Project Japan Map visualizes and samples at runtime.
+
+- **Project Japan** provides the terrain, geography and hydrology.
+- **Project Japan Map** provides the full map, minimap, geography HUD and waypoint interface.
+
+For the intended experience, use Project Japan Map together with Project Japan.
+
 ## Features
 
 ### Full map and minimap
