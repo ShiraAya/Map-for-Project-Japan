@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+set -eu
+GRADLE_VERSION=8.8
+ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+BOOTSTRAP="$ROOT/.gradle-bootstrap"
+ZIP="$BOOTSTRAP/gradle-$GRADLE_VERSION-bin.zip"
+DIST="$BOOTSTRAP/gradle-$GRADLE_VERSION"
+if [ ! -x "$DIST/bin/gradle" ]; then
+  mkdir -p "$BOOTSTRAP"
+  if [ ! -f "$ZIP" ]; then
+    if command -v curl >/dev/null 2>&1; then
+      curl -L "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$ZIP"
+    else
+      wget "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -O "$ZIP"
+    fi
+  fi
+  unzip -q -o "$ZIP" -d "$BOOTSTRAP"
+fi
+exec "$DIST/bin/gradle" "$@"
